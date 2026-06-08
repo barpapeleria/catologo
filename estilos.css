@@ -333,10 +333,17 @@ main {
   background: linear-gradient(135deg, white, #fff0f6);
 }
 
+.gallery .main-img {
+  object-fit: contain;
+  background: #fff8fb;
+}
+
 .featured .main-img {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 16 / 11;
+  object-fit: contain;
   border-radius: 20px;
   border: 1px solid var(--border);
+  background: #fff8fb;
 }
 
 .thumbs {
@@ -435,15 +442,19 @@ main {
 
 .service-thumb {
   width: 130px;
-  min-height: 95px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 14px;
+  height: 95px;
+  overflow: hidden;
   border-radius: 16px;
   border: 1px solid var(--border);
-  background: linear-gradient(135deg, #fff, #fff0f6);
+  background: #fff8fb;
   box-shadow: 0 8px 20px rgba(45,35,48,.06);
+}
+
+.service-thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .service-thumb strong {
@@ -1036,7 +1047,7 @@ footer {
 
   .service-thumb {
     width: 100%;
-    min-height: 90px;
+    height: 170px;
   }
 
   .service-order {
