@@ -992,13 +992,28 @@ Comentarios:`;
       const card = link.closest('.card, .combo-card, .service-list article, .works-cta, .mundial-packs article');
       const section = link.closest('section');
 
-      const productName =
+      let productName =
         card?.querySelector('h3, strong')?.innerText?.trim() ||
         link.innerText.trim();
 
-      const sectionName =
+      let sectionName =
         section?.querySelector('h2')?.innerText?.trim() ||
         'General';
+
+      if (link.id === 'topWhatsappButton') {
+        sectionName = 'Header';
+        productName = 'Botón superior Hacer pedido';
+      }
+
+      if (link.id === 'finalWhatsappButton') {
+        sectionName = 'CTA final';
+        productName = 'Botón final Enviar datos por WhatsApp';
+      }
+
+      if (link.id === 'floating') {
+        sectionName = 'Botón flotante';
+        productName = 'Botón flotante WhatsApp';
+      }
 
       trackEvent('click_whatsapp', {
         categoria: sectionName,
