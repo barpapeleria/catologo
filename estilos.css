@@ -1002,6 +1002,21 @@ footer {
   font-weight: 900;
 }
 
+.mundial-image {
+  max-width: 520px;
+  margin: 24px auto 10px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(45, 35, 48, .14);
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.mundial-image img {
+  width: 100%;
+  display: block;
+}
+
 @media (max-width: 1000px) {
   .grid,
   .steps,
