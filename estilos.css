@@ -935,6 +935,73 @@ footer {
   line-height: 1.4;
 }
 
+.mundial-promo {
+  margin: 20px 0 32px;
+  padding: 30px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #eaf7ff, #ffffff);
+  border: 2px solid #9fd8ff;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.mundial-promo span {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff;
+  color: #1675b8;
+  font-weight: 900;
+}
+
+.mundial-promo h2 {
+  margin: 14px 0 8px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.04em;
+}
+
+.mundial-promo p {
+  color: var(--muted);
+}
+
+.mundial-packs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.mundial-packs article {
+  padding: 22px;
+  border-radius: 22px;
+  background: #fff;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.mundial-packs strong {
+  display: block;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.mundial-packs b {
+  display: block;
+  color: var(--primary-dark);
+  font-size: 1.6rem;
+  margin: 14px 0;
+}
+
+.mundial-packs a {
+  display: flex;
+  justify-content: center;
+  padding: 13px 16px;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 900;
+}
+
 @media (max-width: 1000px) {
   .grid,
   .steps,
@@ -1250,4 +1317,12 @@ footer {
   .floating {
     right: 10px;
   }
+
+  .mundial-packs {
+    grid-template-columns: 1fr;
+  }
+
+  .mundial-promo {
+    padding: 24px 18px;
+  }  
 }
