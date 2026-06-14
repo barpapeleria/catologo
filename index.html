@@ -984,26 +984,26 @@ Comentarios:`;
     }
   }
 
-  if (topWhatsappButton) {
-    topWhatsappButton.addEventListener('click', function () {
-      trackEvent('click_whatsapp_header');
-      trackEvent('click_whatsapp', { ubicacion: 'header' });
-    });
-  }
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      const card = link.closest('.card, .combo-card, .service-list article, .works-cta, .mundial-packs article');
+      const section = link.closest('section');
 
-  if (finalWhatsappButton) {
-    finalWhatsappButton.addEventListener('click', function () {
-      trackEvent('click_whatsapp_final');
-      trackEvent('click_whatsapp', { ubicacion: 'final' });
-    });
-  }
+      const productName =
+        card?.querySelector('h3, strong')?.innerText?.trim() ||
+        link.innerText.trim();
 
-  if (floatingWhatsappButton) {
-    floatingWhatsappButton.addEventListener('click', function () {
-      trackEvent('click_whatsapp_flotante');
-      trackEvent('click_whatsapp', { ubicacion: 'flotante' });
+      const sectionName =
+        section?.querySelector('h2')?.innerText?.trim() ||
+        'General';
+
+      trackEvent('click_whatsapp', {
+        categoria: sectionName,
+        producto: productName,
+        texto_boton: link.innerText.trim()
+      });
     });
-  }
+  });
 
   document.querySelectorAll('.mundial-packs a').forEach(function (link) {
     link.addEventListener('click', function () {
