@@ -980,7 +980,10 @@ Comentarios:`;
 
   function trackEvent(eventName, params = {}) {
     if (typeof gtag === 'function') {
-      gtag('event', eventName, params);
+      gtag('event', eventName, {
+        ...params,
+        transport_type: 'beacon'
+      });
     }
   }
 
