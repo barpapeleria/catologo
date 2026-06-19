@@ -38,6 +38,12 @@
     <p>
       Diseños personalizados, combos y detalles para que tu evento o emprendimiento se vea más lindo.
     </p>
+
+    <div class="hero-actions">
+      <a id="catalogPdfButton" class="catalog-pdf-button" href="/pdf/catalogo-bar-papeleria.pdf" target="_blank" rel="noopener">
+        📄 Ver catálogo PDF
+      </a>
+    </div>
   </section>
 
   <section class="mundial-promo">
@@ -1118,6 +1124,19 @@ Comentarios:`;
       });
     });
   });
+
+
+
+  const catalogPdfButton = document.getElementById('catalogPdfButton');
+
+  if (catalogPdfButton) {
+    catalogPdfButton.addEventListener('click', function () {
+      trackEvent('click_catalogo_pdf', {
+        ubicacion: 'hero',
+        texto_boton: catalogPdfButton.innerText.trim()
+      });
+    });
+  }
 
   document.querySelectorAll('.mundial-packs a').forEach(function (link) {
     link.addEventListener('click', function () {
