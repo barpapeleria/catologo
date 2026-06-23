@@ -43,6 +43,9 @@
       <a id="catalogPdfButton" class="catalog-pdf-button" href="/pdf/catalogo-bar-papeleria.pdf" target="_blank" rel="noopener">
         📄 Ver catálogo PDF
       </a>
+      <a id="mundialLiveButton" class="mundial-live-button" href="#" target="_blank" rel="noopener">
+        <span class="live-dot"></span> ⚽ Seguí el Mundial con Bar Papelería
+      </a>
     </div>
   </section>
 
@@ -1034,6 +1037,11 @@ Comentarios:`;
   const finalWhatsappButton = document.getElementById('finalWhatsappButton');
   const floatingWhatsappButton = document.getElementById('floating');
   const backToTopButton = document.getElementById('backToTop');
+
+  // App del Mundial en vivo.
+  const MUNDIAL_URL = 'https://bar-papeleria-mundial-2026.netlify.app';
+  const mundialLiveButton = document.getElementById('mundialLiveButton');
+  if (mundialLiveButton) { mundialLiveButton.href = MUNDIAL_URL; }
 
   if (topWhatsappButton) {
     topWhatsappButton.href = whatsappOrderUrl;
