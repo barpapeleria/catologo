@@ -162,6 +162,37 @@ main {
   transform: translateY(-1px);
 }
 
+.mundial-live-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6cc4ee, #2a7fd6);
+  color: #fff;
+  font-weight: 900;
+  box-shadow: 0 14px 30px rgba(42, 127, 214, .26);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.mundial-live-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(42, 127, 214, .34);
+}
+.mundial-live-button .live-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, .75);
+  animation: mlpulse 1.4s infinite;
+}
+@keyframes mlpulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 255, 255, .75); }
+  70%  { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
 
 .notice {
   max-width: 790px;
