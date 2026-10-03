@@ -79,6 +79,16 @@ Para ver el sitio en una computadora local:
 
 También se puede usar la extensión **Live Server** de Visual Studio Code para trabajar de forma más cómoda.
 
+## Catálogo PDF
+
+El botón **Ver catálogo PDF** abre `pdf/catalogo-bar-papeleria.pdf`. Ese archivo se genera automáticamente a partir de `index.html` (productos, precios, servicios y combos), así que después de cambiar precios en la web hay que regenerarlo:
+
+```bash
+python tools/generar_catalogo_pdf.py
+```
+
+Requiere Python 3 con Pillow (`pip install pillow`) y Google Chrome o Microsoft Edge instalados.
+
 ## Publicación
 
 El sitio está preparado para ser publicado como sitio estático en Netlify.
