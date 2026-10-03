@@ -169,7 +169,7 @@ body {
 :root {
   --bg: #fff8fb; --text: #2d2330; --muted: #736675;
   --primary: #e85d9e; --primary-dark: #b92f72; --violet: #7c5cff;
-  --green: #1fae57; --border: #f2d8e5;
+  --green: #1fae57; --green-dark: #128c45; --border: #f2d8e5;
 }
 .page {
   width: 210mm; height: 297mm;
@@ -196,10 +196,18 @@ body {
 }
 .page-foot {
   position: absolute; left: 13mm; right: 13mm; bottom: 7mm;
-  display: flex; justify-content: space-between;
+  display: flex; justify-content: space-between; align-items: center;
   font-size: 7.5pt; color: var(--muted);
 }
-.page-foot a { color: var(--muted); text-decoration: none; }
+.page-foot a { color: var(--green-dark); font-weight: 700; font-size: 9pt; text-decoration: none; }
+
+/* ---- ícono de WhatsApp (SVG vectorial, liviano y nítido) ---- */
+.wa { display: inline-flex; align-items: center; gap: 2mm; }
+.wa-badge {
+  width: 6mm; height: 6mm; border-radius: 50%; background: var(--green);
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+}
+.wa-badge svg { width: 3.8mm; height: 3.8mm; display: block; fill: #fff; }
 
 /* ---- portada ---- */
 .cover { display: flex; flex-direction: column; text-align: center; }
@@ -239,7 +247,7 @@ body {
 .cover-contact small { opacity: .9; font-size: 8.5pt; }
 .cover-contact a {
   background: #fff; color: var(--primary-dark); font-weight: 700; text-decoration: none;
-  padding: 3mm 5mm; border-radius: 99px; font-size: 10.5pt; white-space: nowrap;
+  padding: 2mm 5mm 2mm 2mm; border-radius: 99px; font-size: 10.5pt; white-space: nowrap;
 }
 
 /* ---- títulos de sección ---- */
@@ -326,14 +334,33 @@ body {
 .closing h2 { font-size: 17pt; margin: 0 0 2mm; letter-spacing: -0.02em; }
 .closing p { margin: 0 auto 4mm; font-size: 9pt; max-width: 140mm; opacity: .95; line-height: 1.4; }
 .closing a {
-  display: inline-block; background: #fff; color: var(--primary-dark); font-weight: 700;
-  text-decoration: none; padding: 3mm 6mm; border-radius: 99px; font-size: 10.5pt;
+  background: #fff; color: var(--primary-dark); font-weight: 700;
+  text-decoration: none; padding: 2mm 6mm 2mm 2mm; border-radius: 99px; font-size: 10.5pt;
 }
+.cover-contact .wa-badge, .closing .wa-badge { width: 7mm; height: 7mm; }
+.cover-contact .wa-badge svg, .closing .wa-badge svg { width: 4.4mm; height: 4.4mm; }
 .note { margin-top: 5mm; text-align: center; font-size: 7.5pt; color: var(--muted); }
 """
 
 
 EMOJI = re.compile("[\U0001F000-\U0001FFFF\u2600-\u27BF\u2B00-\u2BFF\uFE0F\u200D]")
+
+
+# Logo de WhatsApp (Simple Icons, CC0) como un único trazo vectorial.
+WA_PATH = (
+    "M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164"
+    "-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297"
+    "-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52"
+    "-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074"
+    "-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487"
+    ".709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248"
+    "-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214"
+    "-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122"
+    " 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815"
+    " 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882"
+    " 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+)
+WA_ICON = f'<span class="wa-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="{WA_PATH}"/></svg></span>'
 
 
 def esc(value):
@@ -385,7 +412,7 @@ def page(content, tag, number, total, phone, wa_url, logo):
     </header>
     {content}
     <footer class="page-foot">
-      <a href="{wa_url}">WhatsApp {esc(pretty_phone(phone))}</a>
+      <a class="wa" href="{wa_url}">{WA_ICON}{esc(pretty_phone(phone))}</a>
       <span>Página {number} de {total}</span>
     </footer>
   </section>"""
@@ -402,7 +429,7 @@ def build_html(workdir):
     wa_url = f"https://wa.me/{phone}"
 
     today = datetime.date.today()
-    fecha = f"{MESES[today.month - 1]} {today.year}"
+    fecha = f"{MESES[today.month - 1].capitalize()} {today.year}"
 
     print(f"  {len(cumples)} productos de cumpleaños, {len(emprende)} de emprendimientos, "
           f"{len(services)} servicios, {len(combos)} combos")
@@ -428,7 +455,7 @@ def build_html(workdir):
         <strong>Pedidos por WhatsApp</strong>
         <small>Provincia de Buenos Aires · Trabajos por encargo · Pedidos con seña</small>
       </div>
-      <a href="{wa_url}">{esc(pretty_phone(phone))}</a>
+      <a class="wa" href="{wa_url}">{WA_ICON}{esc(pretty_phone(phone))}</a>
     </div>
   </section>"""
 
@@ -478,7 +505,7 @@ def build_html(workdir):
     <div class="closing">
       <h2>¿Ya elegiste qué necesitás?</h2>
       <p>Mandá producto, cantidad, temática y fecha del evento. Así cotizamos o confirmamos tu pedido más rápido.</p>
-      <a href="{wa_url}">Escribir por WhatsApp · {esc(pretty_phone(phone))}</a>
+      <a class="wa" href="{wa_url}">{WA_ICON}Escribir por WhatsApp · {esc(pretty_phone(phone))}</a>
     </div>
     <p class="note">Precios actualizados a {esc(fecha)}. Pueden modificarse sin previo aviso; consultá disponibilidad, temática y fecha por WhatsApp.</p>"""
 
