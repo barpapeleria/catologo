@@ -29,8 +29,11 @@ El sitio está pensado para ser liviano, rápido y fácil de publicar en platafo
 │   └── optimizar_imagenes.py
 └── img/
     ├── logo-bar.webp
+    ├── logo-bar-sm.webp
     ├── banderines-1.webp
     ├── ...
+    ├── md/                   (versiones medianas para celulares)
+    │   └── ...
     └── thumbs/               (miniaturas de las galerías)
         ├── banderines-1.webp
         └── ...
@@ -90,20 +93,27 @@ También se puede usar la extensión **Live Server** de Visual Studio Code para 
 
 Las fotos del sitio están optimizadas en formato **WebP** para que la página cargue rápido en celulares:
 
-* `img/<nombre>.webp`: versión grande (máx. 1200 px), la que se ve en cada producto.
-* `img/thumbs/<nombre>.webp`: miniatura (máx. 400 px) para las galerías, servicios y logo.
+* `img/<nombre>.webp`: versión grande (máx. 1200 px), para pantallas grandes.
+* `img/md/<nombre>.webp`: versión mediana (máx. 800 px), la que bajan la mayoría de los celulares.
+* `img/thumbs/<nombre>.webp`: miniatura (máx. 400 px) para las galerías.
+* `img/logo-bar-sm.webp`: logo chico para el encabezado y el pie.
+* Las imágenes principales usan `srcset` + `sizes`: el navegador elige solo el tamaño justo para cada pantalla.
 * Todas las imágenes usan `loading="lazy"`: se descargan recién cuando el usuario llega a esa parte de la página.
 
 Para agregar una foto nueva:
 
 1. Copiar la foto (`.jpg` o `.png`) en `img/`.
-2. Correr el optimizador, que genera el `.webp` y la miniatura y borra la foto original:
+2. Correr el optimizador, que genera las tres versiones (grande, mediana y miniatura) y borra la foto original:
 
 ```bash
 python tools/optimizar_imagenes.py
 ```
 
-3. En `index.html` usar `./img/<nombre>.webp` para la imagen principal y, en las galerías, `./img/thumbs/<nombre>.webp` con `data-full="./img/<nombre>.webp"`.
+3. En `index.html`, copiar el bloque de un producto existente y cambiar el nombre de la foto en todas sus rutas (`src`, `srcset`, `data-full` y `data-srcset`). Los números con `w` del `srcset` son el ancho real de cada archivo en píxeles.
+
+## Google Analytics
+
+Para que no compita con la carga inicial, el script de Google Analytics se descarga al primer scroll o toque del visitante (o a los 8 segundos si no hay interacción). Los eventos que ocurren antes quedan en cola y se envían igual.
 
 ## Catálogo PDF
 

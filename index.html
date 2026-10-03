@@ -4,21 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bar Papelería Personalizada | Cumpleaños, Stickers y Emprendimientos</title>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-47N0GQPXN0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'G-47N0GQPXN0');
-  </script>  
+
+    // Google Analytics se descarga al primer scroll/toque (o a los 8 s si no hay
+    // interacción), para no competir con la carga inicial en conexiones lentas.
+    // Los eventos quedan en cola en dataLayer y se envían cuando termina de cargar.
+    (function () {
+      var loaded = false;
+      function loadAnalytics() {
+        if (loaded) return;
+        loaded = true;
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-47N0GQPXN0';
+        document.head.appendChild(script);
+      }
+      ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function (eventName) {
+        window.addEventListener(eventName, loadAnalytics, { once: true, passive: true });
+      });
+      window.addEventListener('load', function () { setTimeout(loadAnalytics, 8000); });
+    })();
+  </script>
+
   <link rel="stylesheet" href="./estilos.css" />
 </head>
 <body>
 
 <header id="inicio" class="topbar">
   <div class="brand">
-    <img class="logo-img" src="./img/thumbs/logo-bar.webp" alt="Bar Papelería personalizada">
+    <img class="logo-img" src="./img/logo-bar-sm.webp" alt="Bar Papelería personalizada">
     <div>
       <strong>Bar Papelería personalizada</strong>
       <small>Catálogo con precios</small>
@@ -247,14 +266,14 @@
 
       <article id="bolsitas-milk" class="card featured">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/bolsitas-milk-1.webp" alt="Bolsitas Milk">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/bolsitas-milk-1.webp" srcset="./img/md/bolsitas-milk-1.webp 800w, ./img/bolsitas-milk-1.webp 1080w" sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" alt="Bolsitas Milk">
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/bolsitas-milk-1.webp" data-full="./img/bolsitas-milk-1.webp" alt="Bolsitas Milk">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-milk-2.webp" data-full="./img/bolsitas-milk-2.webp" alt="Bolsitas Milk">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-milk-3.webp" data-full="./img/bolsitas-milk-3.webp" alt="Bolsitas Milk">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-milk-4.webp" data-full="./img/bolsitas-milk-4.webp" alt="Bolsitas Milk">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-milk-5.webp" data-full="./img/bolsitas-milk-5.webp" alt="Bolsitas Milk">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-milk-6.webp" data-full="./img/bolsitas-milk-6.webp" alt="Bolsitas Milk">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/bolsitas-milk-1.webp" data-full="./img/bolsitas-milk-1.webp" data-sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" data-srcset="./img/md/bolsitas-milk-1.webp 800w, ./img/bolsitas-milk-1.webp 1080w" alt="Bolsitas Milk">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-milk-2.webp" data-full="./img/bolsitas-milk-2.webp" data-sizes="(max-width: 700px) 95vw, (max-width: 1000px) 48vw, 361px" data-srcset="./img/md/bolsitas-milk-2.webp 800w, ./img/bolsitas-milk-2.webp 1080w" alt="Bolsitas Milk">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-milk-3.webp" data-full="./img/bolsitas-milk-3.webp" data-sizes="(max-width: 700px) 90vw, (max-width: 1000px) 45vw, 342px" data-srcset="./img/md/bolsitas-milk-3.webp 800w, ./img/bolsitas-milk-3.webp 1080w" alt="Bolsitas Milk">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-milk-4.webp" data-full="./img/bolsitas-milk-4.webp" data-sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" data-srcset="./img/md/bolsitas-milk-4.webp 800w, ./img/bolsitas-milk-4.webp 1080w" alt="Bolsitas Milk">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-milk-5.webp" data-full="./img/bolsitas-milk-5.webp" data-sizes="(max-width: 700px) 53vw, (max-width: 1000px) 26vw, 201px" data-srcset="./img/md/bolsitas-milk-5.webp 612w, ./img/bolsitas-milk-5.webp 918w" alt="Bolsitas Milk">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-milk-6.webp" data-full="./img/bolsitas-milk-6.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/bolsitas-milk-6.webp 606w, ./img/bolsitas-milk-6.webp 909w" alt="Bolsitas Milk">
           </div>
         </div>
         <div class="content">
@@ -274,14 +293,14 @@
 
       <article id="bolsitas-golosineras" class="card featured">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/bolsitas-golosineras-1.webp" alt="Bolsitas Golosineras">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/bolsitas-golosineras-1.webp" srcset="./img/md/bolsitas-golosineras-1.webp 592w, ./img/bolsitas-golosineras-1.webp 888w" sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" alt="Bolsitas Golosineras">
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/bolsitas-golosineras-1.webp" data-full="./img/bolsitas-golosineras-1.webp" alt="Bolsitas Golosineras">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-golosineras-2.webp" data-full="./img/bolsitas-golosineras-2.webp" alt="Bolsitas Golosineras">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-golosineras-3.webp" data-full="./img/bolsitas-golosineras-3.webp" alt="Bolsitas Golosineras">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-golosineras-4.webp" data-full="./img/bolsitas-golosineras-4.webp" alt="Bolsitas Golosineras">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-golosineras-5.webp" data-full="./img/bolsitas-golosineras-5.webp" alt="Bolsitas Golosineras">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-golosineras-6.webp" data-full="./img/bolsitas-golosineras-6.webp" alt="Bolsitas Golosineras">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/bolsitas-golosineras-1.webp" data-full="./img/bolsitas-golosineras-1.webp" data-sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" data-srcset="./img/md/bolsitas-golosineras-1.webp 592w, ./img/bolsitas-golosineras-1.webp 888w" alt="Bolsitas Golosineras">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-golosineras-2.webp" data-full="./img/bolsitas-golosineras-2.webp" data-sizes="(max-width: 700px) 91vw, (max-width: 1000px) 46vw, 346px" data-srcset="./img/md/bolsitas-golosineras-2.webp 800w, ./img/bolsitas-golosineras-2.webp 1080w" alt="Bolsitas Golosineras">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-golosineras-3.webp" data-full="./img/bolsitas-golosineras-3.webp" data-sizes="(max-width: 700px) 89vw, (max-width: 1000px) 44vw, 338px" data-srcset="./img/md/bolsitas-golosineras-3.webp 800w, ./img/bolsitas-golosineras-3.webp 1080w" alt="Bolsitas Golosineras">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-golosineras-4.webp" data-full="./img/bolsitas-golosineras-4.webp" data-sizes="(max-width: 700px) 89vw, (max-width: 1000px) 44vw, 338px" data-srcset="./img/md/bolsitas-golosineras-4.webp 800w, ./img/bolsitas-golosineras-4.webp 1080w" alt="Bolsitas Golosineras">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-golosineras-5.webp" data-full="./img/bolsitas-golosineras-5.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/bolsitas-golosineras-5.webp 608w, ./img/bolsitas-golosineras-5.webp 913w" alt="Bolsitas Golosineras">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-golosineras-6.webp" data-full="./img/bolsitas-golosineras-6.webp" data-sizes="(max-width: 700px) 58vw, (max-width: 1000px) 29vw, 220px" data-srcset="./img/md/bolsitas-golosineras-6.webp 680w, ./img/bolsitas-golosineras-6.webp 1020w" alt="Bolsitas Golosineras">
           </div>
         </div>
         <div class="content">
@@ -301,14 +320,14 @@
 
       <article id="bolsitas-pochocleras" class="card featured">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/bolsitas-pochocleras-1.webp" alt="Bolsitas pochocleras">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/bolsitas-pochocleras-1.webp" srcset="./img/md/bolsitas-pochocleras-1.webp 800w, ./img/bolsitas-pochocleras-1.webp 1080w" sizes="(max-width: 700px) 91vw, (max-width: 1000px) 46vw, 346px" alt="Bolsitas pochocleras">
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/bolsitas-pochocleras-1.webp" data-full="./img/bolsitas-pochocleras-1.webp" alt="Bolsitas pochocleras">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-pochocleras-2.webp" data-full="./img/bolsitas-pochocleras-2.webp" alt="Bolsitas pochocleras">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-pochocleras-3.webp" data-full="./img/bolsitas-pochocleras-3.webp" alt="Bolsitas pochocleras">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-pochocleras-4.webp" data-full="./img/bolsitas-pochocleras-4.webp" alt="Bolsitas pochocleras">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-pochocleras-5.webp" data-full="./img/bolsitas-pochocleras-5.webp" alt="Bolsitas pochocleras">
-            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-pochocleras-6.webp" data-full="./img/bolsitas-pochocleras-6.webp" alt="Bolsitas pochocleras">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/bolsitas-pochocleras-1.webp" data-full="./img/bolsitas-pochocleras-1.webp" data-sizes="(max-width: 700px) 91vw, (max-width: 1000px) 46vw, 346px" data-srcset="./img/md/bolsitas-pochocleras-1.webp 800w, ./img/bolsitas-pochocleras-1.webp 1080w" alt="Bolsitas pochocleras">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-pochocleras-2.webp" data-full="./img/bolsitas-pochocleras-2.webp" data-sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" data-srcset="./img/md/bolsitas-pochocleras-2.webp 800w, ./img/bolsitas-pochocleras-2.webp 1080w" alt="Bolsitas pochocleras">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-pochocleras-3.webp" data-full="./img/bolsitas-pochocleras-3.webp" data-sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" data-srcset="./img/md/bolsitas-pochocleras-3.webp 800w, ./img/bolsitas-pochocleras-3.webp 1080w" alt="Bolsitas pochocleras">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-pochocleras-4.webp" data-full="./img/bolsitas-pochocleras-4.webp" data-sizes="(max-width: 700px) 56vw, (max-width: 1000px) 28vw, 213px" data-srcset="./img/md/bolsitas-pochocleras-4.webp 657w, ./img/bolsitas-pochocleras-4.webp 985w" alt="Bolsitas pochocleras">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-pochocleras-5.webp" data-full="./img/bolsitas-pochocleras-5.webp" data-sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" data-srcset="./img/md/bolsitas-pochocleras-5.webp 800w, ./img/bolsitas-pochocleras-5.webp 1080w" alt="Bolsitas pochocleras">
+            <img loading="lazy" decoding="async" src="./img/thumbs/bolsitas-pochocleras-6.webp" data-full="./img/bolsitas-pochocleras-6.webp" data-sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" data-srcset="./img/md/bolsitas-pochocleras-6.webp 597w, ./img/bolsitas-pochocleras-6.webp 895w" alt="Bolsitas pochocleras">
           </div>
         </div>
         <div class="content">
@@ -328,14 +347,14 @@
 
       <article id="centros-tripticos" class="card featured">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/centro-1-triptico.webp" alt="Centros de mesa (Trípticos)">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/centro-1-triptico.webp" srcset="./img/md/centro-1-triptico.webp 600w, ./img/centro-1-triptico.webp 900w" sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" alt="Centros de mesa (Trípticos)">
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/centro-1-triptico.webp" data-full="./img/centro-1-triptico.webp" alt="Centros de mesa (Trípticos)">
-            <img loading="lazy" decoding="async" src="./img/thumbs/centro-2-triptico.webp" data-full="./img/centro-2-triptico.webp" alt="Centros de mesa (Trípticos)">
-            <img loading="lazy" decoding="async" src="./img/thumbs/centro-3-triptico.webp" data-full="./img/centro-3-triptico.webp" alt="Centros de mesa (Trípticos)">
-            <img loading="lazy" decoding="async" src="./img/thumbs/centro-4-triptico.webp" data-full="./img/centro-4-triptico.webp" alt="Centros de mesa (Trípticos)">
-            <img loading="lazy" decoding="async" src="./img/thumbs/centro-5-triptico.webp" data-full="./img/centro-5-triptico.webp" alt="Centros de mesa (Trípticos)">
-            <img loading="lazy" decoding="async" src="./img/thumbs/centro-6-triptico.webp" data-full="./img/centro-6-triptico.webp" alt="Centros de mesa (Trípticos)">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/centro-1-triptico.webp" data-full="./img/centro-1-triptico.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/centro-1-triptico.webp 600w, ./img/centro-1-triptico.webp 900w" alt="Centros de mesa (Trípticos)">
+            <img loading="lazy" decoding="async" src="./img/thumbs/centro-2-triptico.webp" data-full="./img/centro-2-triptico.webp" data-sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" data-srcset="./img/md/centro-2-triptico.webp 800w, ./img/centro-2-triptico.webp 1200w" alt="Centros de mesa (Trípticos)">
+            <img loading="lazy" decoding="async" src="./img/thumbs/centro-3-triptico.webp" data-full="./img/centro-3-triptico.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/centro-3-triptico.webp 600w, ./img/centro-3-triptico.webp 900w" alt="Centros de mesa (Trípticos)">
+            <img loading="lazy" decoding="async" src="./img/thumbs/centro-4-triptico.webp" data-full="./img/centro-4-triptico.webp" data-sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" data-srcset="./img/md/centro-4-triptico.webp 599w, ./img/centro-4-triptico.webp 898w" alt="Centros de mesa (Trípticos)">
+            <img loading="lazy" decoding="async" src="./img/thumbs/centro-5-triptico.webp" data-full="./img/centro-5-triptico.webp" data-sizes="(max-width: 700px) 53vw, (max-width: 1000px) 26vw, 201px" data-srcset="./img/md/centro-5-triptico.webp 615w, ./img/centro-5-triptico.webp 922w" alt="Centros de mesa (Trípticos)">
+            <img loading="lazy" decoding="async" src="./img/thumbs/centro-6-triptico.webp" data-full="./img/centro-6-triptico.webp" data-sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" data-srcset="./img/md/centro-6-triptico.webp 800w, ./img/centro-6-triptico.webp 1200w" alt="Centros de mesa (Trípticos)">
           </div>
         </div>
         <div class="content">
@@ -355,14 +374,14 @@
 
       <article id="centros-personalizados" class="card featured">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/centro-1-personalizado.webp" alt="Centros de mesa personalizados">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/centro-1-personalizado.webp" srcset="./img/md/centro-1-personalizado.webp 800w, ./img/centro-1-personalizado.webp 1200w" sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" alt="Centros de mesa personalizados">
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/centro-1-personalizado.webp" data-full="./img/centro-1-personalizado.webp" alt="Centros de mesa personalizados">
-            <img loading="lazy" decoding="async" src="./img/thumbs/centro-2-personalizado.webp" data-full="./img/centro-2-personalizado.webp" alt="Centros de mesa personalizados" class="">
-            <img loading="lazy" decoding="async" src="./img/thumbs/centro-3-personalizado.webp" data-full="./img/centro-3-personalizado.webp" alt="Centros de mesa personalizados" class="">
-            <img loading="lazy" decoding="async" src="./img/thumbs/centro-4-personalizado.webp" data-full="./img/centro-4-personalizado.webp" alt="Centros de mesa personalizados" class="">
-            <img loading="lazy" decoding="async" src="./img/thumbs/centro-5-personalizado.webp" data-full="./img/centro-5-personalizado.webp" alt="Centros de mesa personalizados" class="">
-            <img loading="lazy" decoding="async" src="./img/thumbs/centro-6-personalizado.webp" data-full="./img/centro-6-personalizado.webp" alt="Centros de mesa personalizados" class="">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/centro-1-personalizado.webp" data-full="./img/centro-1-personalizado.webp" data-sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" data-srcset="./img/md/centro-1-personalizado.webp 800w, ./img/centro-1-personalizado.webp 1200w" alt="Centros de mesa personalizados">
+            <img loading="lazy" decoding="async" src="./img/thumbs/centro-2-personalizado.webp" data-full="./img/centro-2-personalizado.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/centro-2-personalizado.webp 600w, ./img/centro-2-personalizado.webp 900w" alt="Centros de mesa personalizados" class="">
+            <img loading="lazy" decoding="async" src="./img/thumbs/centro-3-personalizado.webp" data-full="./img/centro-3-personalizado.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/centro-3-personalizado.webp 600w, ./img/centro-3-personalizado.webp 900w" alt="Centros de mesa personalizados" class="">
+            <img loading="lazy" decoding="async" src="./img/thumbs/centro-4-personalizado.webp" data-full="./img/centro-4-personalizado.webp" data-sizes="(max-width: 700px) 49vw, (max-width: 1000px) 24vw, 186px" data-srcset="./img/md/centro-4-personalizado.webp 565w, ./img/centro-4-personalizado.webp 848w" alt="Centros de mesa personalizados" class="">
+            <img loading="lazy" decoding="async" src="./img/thumbs/centro-5-personalizado.webp" data-full="./img/centro-5-personalizado.webp" data-sizes="(max-width: 700px) 54vw, (max-width: 1000px) 27vw, 205px" data-srcset="./img/md/centro-5-personalizado.webp 624w, ./img/centro-5-personalizado.webp 936w" alt="Centros de mesa personalizados" class="">
+            <img loading="lazy" decoding="async" src="./img/thumbs/centro-6-personalizado.webp" data-full="./img/centro-6-personalizado.webp" data-sizes="(max-width: 700px) 54vw, (max-width: 1000px) 27vw, 205px" data-srcset="./img/md/centro-6-personalizado.webp 623w, ./img/centro-6-personalizado.webp 935w" alt="Centros de mesa personalizados" class="">
           </div>
         </div>
         <div class="content">
@@ -382,14 +401,14 @@
 
       <article id="servilleteros" class="card featured">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/servilleteros-1.webp" alt="Servilleteros">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/servilleteros-1.webp" srcset="./img/md/servilleteros-1.webp 800w, ./img/servilleteros-1.webp 1200w" sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" alt="Servilleteros">
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/servilleteros-1.webp" data-full="./img/servilleteros-1.webp" alt="Servilleteros">
-            <img loading="lazy" decoding="async" src="./img/thumbs/servilleteros-2.webp" data-full="./img/servilleteros-2.webp" alt="Servilleteros">
-            <img loading="lazy" decoding="async" src="./img/thumbs/servilleteros-3.webp" data-full="./img/servilleteros-3.webp" alt="Servilleteros">
-            <img loading="lazy" decoding="async" src="./img/thumbs/servilleteros-4.webp" data-full="./img/servilleteros-4.webp" alt="Servilleteros">
-            <img loading="lazy" decoding="async" src="./img/thumbs/servilleteros-5.webp" data-full="./img/servilleteros-5.webp" alt="Servilleteros">
-            <img loading="lazy" decoding="async" src="./img/thumbs/servilleteros-6.webp" data-full="./img/servilleteros-6.webp" alt="Servilleteros">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/servilleteros-1.webp" data-full="./img/servilleteros-1.webp" data-sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" data-srcset="./img/md/servilleteros-1.webp 800w, ./img/servilleteros-1.webp 1200w" alt="Servilleteros">
+            <img loading="lazy" decoding="async" src="./img/thumbs/servilleteros-2.webp" data-full="./img/servilleteros-2.webp" data-sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" data-srcset="./img/md/servilleteros-2.webp 800w, ./img/servilleteros-2.webp 1200w" alt="Servilleteros">
+            <img loading="lazy" decoding="async" src="./img/thumbs/servilleteros-3.webp" data-full="./img/servilleteros-3.webp" data-sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" data-srcset="./img/md/servilleteros-3.webp 800w, ./img/servilleteros-3.webp 1200w" alt="Servilleteros">
+            <img loading="lazy" decoding="async" src="./img/thumbs/servilleteros-4.webp" data-full="./img/servilleteros-4.webp" data-sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" data-srcset="./img/md/servilleteros-4.webp 800w, ./img/servilleteros-4.webp 1200w" alt="Servilleteros">
+            <img loading="lazy" decoding="async" src="./img/thumbs/servilleteros-5.webp" data-full="./img/servilleteros-5.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/servilleteros-5.webp 600w, ./img/servilleteros-5.webp 736w" alt="Servilleteros">
+            <img loading="lazy" decoding="async" src="./img/thumbs/servilleteros-6.webp" data-full="./img/servilleteros-6.webp" data-sizes="(max-width: 700px) 55vw, (max-width: 1000px) 28vw, 209px" data-srcset="./img/md/servilleteros-6.webp 640w, ./img/servilleteros-6.webp 736w" alt="Servilleteros">
           </div>
         </div>
         <div class="content">
@@ -408,14 +427,14 @@
 
       <article id="banderines" class="card featured">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/banderines-1.webp" alt="Banderines">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/banderines-1.webp" srcset="./img/md/banderines-1.webp 768w" sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" alt="Banderines">
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/banderines-1.webp" data-full="./img/banderines-1.webp" alt="Banderines">
-            <img loading="lazy" decoding="async" src="./img/thumbs/banderines-2.webp" data-full="./img/banderines-2.webp" alt="Banderines">
-            <img loading="lazy" decoding="async" src="./img/thumbs/banderines-3.webp" data-full="./img/banderines-3.webp" alt="Banderines">
-            <img loading="lazy" decoding="async" src="./img/thumbs/banderines-4.webp" data-full="./img/banderines-4.webp" alt="Banderines">
-            <img loading="lazy" decoding="async" src="./img/thumbs/banderines-5.webp" data-full="./img/banderines-5.webp" alt="Banderines">
-            <img loading="lazy" decoding="async" src="./img/thumbs/banderines-6.webp" data-full="./img/banderines-6.webp" alt="Banderines">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/banderines-1.webp" data-full="./img/banderines-1.webp" data-sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" data-srcset="./img/md/banderines-1.webp 768w" alt="Banderines">
+            <img loading="lazy" decoding="async" src="./img/thumbs/banderines-2.webp" data-full="./img/banderines-2.webp" data-sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" data-srcset="./img/md/banderines-2.webp 800w, ./img/banderines-2.webp 1200w" alt="Banderines">
+            <img loading="lazy" decoding="async" src="./img/thumbs/banderines-3.webp" data-full="./img/banderines-3.webp" data-sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" data-srcset="./img/md/banderines-3.webp 800w, ./img/banderines-3.webp 1200w" alt="Banderines">
+            <img loading="lazy" decoding="async" src="./img/thumbs/banderines-4.webp" data-full="./img/banderines-4.webp" data-sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" data-srcset="./img/md/banderines-4.webp 800w, ./img/banderines-4.webp 1200w" alt="Banderines">
+            <img loading="lazy" decoding="async" src="./img/thumbs/banderines-5.webp" data-full="./img/banderines-5.webp" data-sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" data-srcset="./img/md/banderines-5.webp 800w, ./img/banderines-5.webp 1200w" alt="Banderines">
+            <img loading="lazy" decoding="async" src="./img/thumbs/banderines-6.webp" data-full="./img/banderines-6.webp" data-sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" data-srcset="./img/md/banderines-6.webp 736w" alt="Banderines">
           </div>
         </div>
         <div class="content">
@@ -434,15 +453,15 @@
 
       <article id="libritos-colorear" class="card featured">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/libritos-1.webp" alt="Libritos para colorear">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/libritos-1.webp" srcset="./img/md/libritos-1.webp 583w, ./img/libritos-1.webp 874w" sizes="(max-width: 700px) 50vw, (max-width: 1000px) 25vw, 190px" alt="Libritos para colorear">
 
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/libritos-1.webp" data-full="./img/libritos-1.webp" alt="Libritos para colorear">
-            <img loading="lazy" decoding="async" src="./img/thumbs/libritos-2.webp" data-full="./img/libritos-2.webp" alt="Libritos para colorear">
-            <img loading="lazy" decoding="async" src="./img/thumbs/libritos-3.webp" data-full="./img/libritos-3.webp" alt="Libritos para colorear">
-            <img loading="lazy" decoding="async" src="./img/thumbs/libritos-4.webp" data-full="./img/libritos-4.webp" alt="Libritos para colorear">
-            <img loading="lazy" decoding="async" src="./img/thumbs/libritos-5.webp" data-full="./img/libritos-5.webp" alt="Libritos para colorear">
-            <img loading="lazy" decoding="async" src="./img/thumbs/libritos-6.webp" data-full="./img/libritos-6.webp" alt="Libritos para colorear">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/libritos-1.webp" data-full="./img/libritos-1.webp" data-sizes="(max-width: 700px) 50vw, (max-width: 1000px) 25vw, 190px" data-srcset="./img/md/libritos-1.webp 583w, ./img/libritos-1.webp 874w" alt="Libritos para colorear">
+            <img loading="lazy" decoding="async" src="./img/thumbs/libritos-2.webp" data-full="./img/libritos-2.webp" data-sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" data-srcset="./img/md/libritos-2.webp 596w, ./img/libritos-2.webp 894w" alt="Libritos para colorear">
+            <img loading="lazy" decoding="async" src="./img/thumbs/libritos-3.webp" data-full="./img/libritos-3.webp" data-sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" data-srcset="./img/md/libritos-3.webp 593w, ./img/libritos-3.webp 889w" alt="Libritos para colorear">
+            <img loading="lazy" decoding="async" src="./img/thumbs/libritos-4.webp" data-full="./img/libritos-4.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/libritos-4.webp 601w, ./img/libritos-4.webp 901w" alt="Libritos para colorear">
+            <img loading="lazy" decoding="async" src="./img/thumbs/libritos-5.webp" data-full="./img/libritos-5.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/libritos-5.webp 599w, ./img/libritos-5.webp 899w" alt="Libritos para colorear">
+            <img loading="lazy" decoding="async" src="./img/thumbs/libritos-6.webp" data-full="./img/libritos-6.webp" data-sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" data-srcset="./img/md/libritos-6.webp 598w, ./img/libritos-6.webp 896w" alt="Libritos para colorear">
           </div>
         </div>
 
@@ -468,15 +487,15 @@
 
       <article id="topper-torta" class="card featured">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/topper-torta-1.webp" alt="Topper para torta">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/topper-torta-1.webp" srcset="./img/md/topper-torta-1.webp 600w, ./img/topper-torta-1.webp 900w" sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" alt="Topper para torta">
 
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/topper-torta-1.webp" data-full="./img/topper-torta-1.webp" alt="Topper para torta">
-            <img loading="lazy" decoding="async" src="./img/thumbs/topper-torta-2.webp" data-full="./img/topper-torta-2.webp" alt="Topper para torta">
-            <img loading="lazy" decoding="async" src="./img/thumbs/topper-torta-3.webp" data-full="./img/topper-torta-3.webp" alt="Topper para torta">
-            <img loading="lazy" decoding="async" src="./img/thumbs/topper-torta-4.webp" data-full="./img/topper-torta-4.webp" alt="Topper para torta">
-            <img loading="lazy" decoding="async" src="./img/thumbs/topper-torta-5.webp" data-full="./img/topper-torta-5.webp" alt="Topper para torta">
-            <img loading="lazy" decoding="async" src="./img/thumbs/topper-torta-6.webp" data-full="./img/topper-torta-6.webp" alt="Topper para torta">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/topper-torta-1.webp" data-full="./img/topper-torta-1.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/topper-torta-1.webp 600w, ./img/topper-torta-1.webp 900w" alt="Topper para torta">
+            <img loading="lazy" decoding="async" src="./img/thumbs/topper-torta-2.webp" data-full="./img/topper-torta-2.webp" data-sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" data-srcset="./img/md/topper-torta-2.webp 432w" alt="Topper para torta">
+            <img loading="lazy" decoding="async" src="./img/thumbs/topper-torta-3.webp" data-full="./img/topper-torta-3.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/topper-torta-3.webp 600w, ./img/topper-torta-3.webp 900w" alt="Topper para torta">
+            <img loading="lazy" decoding="async" src="./img/thumbs/topper-torta-4.webp" data-full="./img/topper-torta-4.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/topper-torta-4.webp 439w" alt="Topper para torta">
+            <img loading="lazy" decoding="async" src="./img/thumbs/topper-torta-5.webp" data-full="./img/topper-torta-5.webp" data-sizes="(max-width: 700px) 39vw, (max-width: 1000px) 20vw, 148px" data-srcset="./img/md/topper-torta-5.webp 450w, ./img/topper-torta-5.webp 675w" alt="Topper para torta">
+            <img loading="lazy" decoding="async" src="./img/thumbs/topper-torta-6.webp" data-full="./img/topper-torta-6.webp" data-sizes="(max-width: 700px) 56vw, (max-width: 1000px) 28vw, 213px" data-srcset="./img/md/topper-torta-6.webp 647w, ./img/topper-torta-6.webp 970w" alt="Topper para torta">
           </div>
         </div>
 
@@ -502,15 +521,15 @@
 
       <article id="topper-cupcakes" class="card featured">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/topper-cupcakes-1.webp" alt="Topper para cupcakes">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/topper-cupcakes-1.webp" srcset="./img/md/topper-cupcakes-1.webp 597w, ./img/topper-cupcakes-1.webp 895w" sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" alt="Topper para cupcakes">
 
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/topper-cupcakes-1.webp" data-full="./img/topper-cupcakes-1.webp" alt="Topper para cupcakes">
-            <img loading="lazy" decoding="async" src="./img/thumbs/topper-cupcakes-2.webp" data-full="./img/topper-cupcakes-2.webp" alt="Topper para cupcakes">
-            <img loading="lazy" decoding="async" src="./img/thumbs/topper-cupcakes-3.webp" data-full="./img/topper-cupcakes-3.webp" alt="Topper para cupcakes">
-            <img loading="lazy" decoding="async" src="./img/thumbs/topper-cupcakes-4.webp" data-full="./img/topper-cupcakes-4.webp" alt="Topper para cupcakes">
-            <img loading="lazy" decoding="async" src="./img/thumbs/topper-cupcakes-5.webp" data-full="./img/topper-cupcakes-5.webp" alt="Topper para cupcakes">
-            <img loading="lazy" decoding="async" src="./img/thumbs/topper-cupcakes-6.webp" data-full="./img/topper-cupcakes-6.webp" alt="Topper para cupcakes">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/topper-cupcakes-1.webp" data-full="./img/topper-cupcakes-1.webp" data-sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" data-srcset="./img/md/topper-cupcakes-1.webp 597w, ./img/topper-cupcakes-1.webp 895w" alt="Topper para cupcakes">
+            <img loading="lazy" decoding="async" src="./img/thumbs/topper-cupcakes-2.webp" data-full="./img/topper-cupcakes-2.webp" data-sizes="(max-width: 700px) 76vw, (max-width: 1000px) 38vw, 289px" data-srcset="./img/md/topper-cupcakes-2.webp 800w, ./img/topper-cupcakes-2.webp 1080w" alt="Topper para cupcakes">
+            <img loading="lazy" decoding="async" src="./img/thumbs/topper-cupcakes-3.webp" data-full="./img/topper-cupcakes-3.webp" data-sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" data-srcset="./img/md/topper-cupcakes-3.webp 800w, ./img/topper-cupcakes-3.webp 1080w" alt="Topper para cupcakes">
+            <img loading="lazy" decoding="async" src="./img/thumbs/topper-cupcakes-4.webp" data-full="./img/topper-cupcakes-4.webp" data-sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" data-srcset="./img/md/topper-cupcakes-4.webp 800w, ./img/topper-cupcakes-4.webp 1080w" alt="Topper para cupcakes">
+            <img loading="lazy" decoding="async" src="./img/thumbs/topper-cupcakes-5.webp" data-full="./img/topper-cupcakes-5.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/topper-cupcakes-5.webp 603w, ./img/topper-cupcakes-5.webp 904w" alt="Topper para cupcakes">
+            <img loading="lazy" decoding="async" src="./img/thumbs/topper-cupcakes-6.webp" data-full="./img/topper-cupcakes-6.webp" data-sizes="(max-width: 700px) 55vw, (max-width: 1000px) 28vw, 209px" data-srcset="./img/md/topper-cupcakes-6.webp 641w, ./img/topper-cupcakes-6.webp 961w" alt="Topper para cupcakes">
           </div>
         </div>
 
@@ -536,15 +555,15 @@
 
       <article id="tatuajes-temporales" class="card featured">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/tatuajes-1-bis.webp" alt="Tatuajes temporales">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/tatuajes-1-bis.webp" srcset="./img/md/tatuajes-1-bis.webp 450w, ./img/tatuajes-1-bis.webp 675w" sizes="(max-width: 700px) 39vw, (max-width: 1000px) 20vw, 148px" alt="Tatuajes temporales">
 
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/tatuajes-1-bis.webp" data-full="./img/tatuajes-1-bis.webp" alt="Tatuajes temporales">
-            <img loading="lazy" decoding="async" src="./img/thumbs/tatuajes-1.webp" data-full="./img/tatuajes-1.webp" alt="Tatuajes temporales">
-            <img loading="lazy" decoding="async" src="./img/thumbs/tatuajes-2.webp" data-full="./img/tatuajes-2.webp" alt="Tatuajes temporales">
-            <img loading="lazy" decoding="async" src="./img/thumbs/tatuajes-3.webp" data-full="./img/tatuajes-3.webp" alt="Tatuajes temporales">
-            <img loading="lazy" decoding="async" src="./img/thumbs/tatuajes-4.webp" data-full="./img/tatuajes-4.webp" alt="Tatuajes temporales">
-            <img loading="lazy" decoding="async" src="./img/thumbs/tatuajes-5.webp" data-full="./img/tatuajes-5.webp" alt="Tatuajes temporales">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/tatuajes-1-bis.webp" data-full="./img/tatuajes-1-bis.webp" data-sizes="(max-width: 700px) 39vw, (max-width: 1000px) 20vw, 148px" data-srcset="./img/md/tatuajes-1-bis.webp 450w, ./img/tatuajes-1-bis.webp 675w" alt="Tatuajes temporales">
+            <img loading="lazy" decoding="async" src="./img/thumbs/tatuajes-1.webp" data-full="./img/tatuajes-1.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/tatuajes-1.webp 600w, ./img/tatuajes-1.webp 900w" alt="Tatuajes temporales">
+            <img loading="lazy" decoding="async" src="./img/thumbs/tatuajes-2.webp" data-full="./img/tatuajes-2.webp" data-sizes="(max-width: 700px) 93vw, (max-width: 1000px) 46vw, 353px" data-srcset="./img/md/tatuajes-2.webp 800w, ./img/tatuajes-2.webp 948w" alt="Tatuajes temporales">
+            <img loading="lazy" decoding="async" src="./img/thumbs/tatuajes-3.webp" data-full="./img/tatuajes-3.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/tatuajes-3.webp 603w, ./img/tatuajes-3.webp 905w" alt="Tatuajes temporales">
+            <img loading="lazy" decoding="async" src="./img/thumbs/tatuajes-4.webp" data-full="./img/tatuajes-4.webp" data-sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" data-srcset="./img/md/tatuajes-4.webp 594w, ./img/tatuajes-4.webp 892w" alt="Tatuajes temporales">
+            <img loading="lazy" decoding="async" src="./img/thumbs/tatuajes-5.webp" data-full="./img/tatuajes-5.webp" data-sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" data-srcset="./img/md/tatuajes-5.webp 599w, ./img/tatuajes-5.webp 898w" alt="Tatuajes temporales">
           </div>
         </div>
 
@@ -572,15 +591,15 @@
 
       <article id="letras-3d" class="card featured">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/letras-3d-1.webp" alt="Letras 3D">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/letras-3d-1.webp" srcset="./img/md/letras-3d-1.webp 800w, ./img/letras-3d-1.webp 1200w" sizes="(max-width: 700px) 93vw, (max-width: 1000px) 46vw, 353px" alt="Letras 3D">
 
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/letras-3d-1.webp" data-full="./img/letras-3d-1.webp" alt="Letras 3D">
-            <img loading="lazy" decoding="async" src="./img/thumbs/letras-3d-2.webp" data-full="./img/letras-3d-2.webp" alt="Letras 3D">
-            <img loading="lazy" decoding="async" src="./img/thumbs/letras-3d-3.webp" data-full="./img/letras-3d-3.webp" alt="Letras 3D">
-            <img loading="lazy" decoding="async" src="./img/thumbs/letras-3d-4.webp" data-full="./img/letras-3d-4.webp" alt="Letras 3D">
-            <img loading="lazy" decoding="async" src="./img/thumbs/letras-3d-5.webp" data-full="./img/letras-3d-5.webp" alt="Letras 3D">
-            <img loading="lazy" decoding="async" src="./img/thumbs/letras-3d-6.webp" data-full="./img/letras-3d-6.webp" alt="Letras 3D">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/letras-3d-1.webp" data-full="./img/letras-3d-1.webp" data-sizes="(max-width: 700px) 93vw, (max-width: 1000px) 46vw, 353px" data-srcset="./img/md/letras-3d-1.webp 800w, ./img/letras-3d-1.webp 1200w" alt="Letras 3D">
+            <img loading="lazy" decoding="async" src="./img/thumbs/letras-3d-2.webp" data-full="./img/letras-3d-2.webp" data-sizes="(max-width: 700px) 90vw, (max-width: 1000px) 45vw, 342px" data-srcset="./img/md/letras-3d-2.webp 800w, ./img/letras-3d-2.webp 1200w" alt="Letras 3D">
+            <img loading="lazy" decoding="async" src="./img/thumbs/letras-3d-3.webp" data-full="./img/letras-3d-3.webp" data-sizes="(max-width: 700px) 61vw, (max-width: 1000px) 30vw, 232px" data-srcset="./img/md/letras-3d-3.webp 714w, ./img/letras-3d-3.webp 1071w" alt="Letras 3D">
+            <img loading="lazy" decoding="async" src="./img/thumbs/letras-3d-4.webp" data-full="./img/letras-3d-4.webp" data-sizes="(max-width: 700px) 92vw, (max-width: 1000px) 46vw, 350px" data-srcset="./img/md/letras-3d-4.webp 800w, ./img/letras-3d-4.webp 1200w" alt="Letras 3D">
+            <img loading="lazy" decoding="async" src="./img/thumbs/letras-3d-5.webp" data-full="./img/letras-3d-5.webp" data-sizes="(max-width: 700px) 67vw, (max-width: 1000px) 34vw, 255px" data-srcset="./img/md/letras-3d-5.webp 778w, ./img/letras-3d-5.webp 1080w" alt="Letras 3D">
+            <img loading="lazy" decoding="async" src="./img/thumbs/letras-3d-6.webp" data-full="./img/letras-3d-6.webp" data-sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" data-srcset="./img/md/letras-3d-6.webp 800w, ./img/letras-3d-6.webp 1200w" alt="Letras 3D">
           </div>
         </div>
 
@@ -614,12 +633,12 @@
 
       <article id="stickers-comun" class="card">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/stickers-comun-1.webp" alt="Stickers común">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/stickers-comun-1.webp" srcset="./img/md/stickers-comun-1.webp 604w, ./img/stickers-comun-1.webp 906w" sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" alt="Stickers común">
 
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/stickers-comun-1.webp" data-full="./img/stickers-comun-1.webp" alt="Stickers común">
-            <img loading="lazy" decoding="async" src="./img/thumbs/stickers-comun-2.webp" data-full="./img/stickers-comun-2.webp" alt="Stickers común">
-            <img loading="lazy" decoding="async" src="./img/thumbs/stickers-comun-3.webp" data-full="./img/stickers-comun-3.webp" alt="Stickers común">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/stickers-comun-1.webp" data-full="./img/stickers-comun-1.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/stickers-comun-1.webp 604w, ./img/stickers-comun-1.webp 906w" alt="Stickers común">
+            <img loading="lazy" decoding="async" src="./img/thumbs/stickers-comun-2.webp" data-full="./img/stickers-comun-2.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/stickers-comun-2.webp 601w, ./img/stickers-comun-2.webp 901w" alt="Stickers común">
+            <img loading="lazy" decoding="async" src="./img/thumbs/stickers-comun-3.webp" data-full="./img/stickers-comun-3.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/stickers-comun-3.webp 604w, ./img/stickers-comun-3.webp 906w" alt="Stickers común">
           </div>
         </div>
 
@@ -640,12 +659,12 @@
 
       <article id="stickers-vinilo" class="card">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/stickers-vinilo-fondo-blanco-1.webp" alt="Stickers vinilo a prueba de agua (fondo blanco)">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/stickers-vinilo-fondo-blanco-1.webp" srcset="./img/md/stickers-vinilo-fondo-blanco-1.webp 600w, ./img/stickers-vinilo-fondo-blanco-1.webp 900w" sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" alt="Stickers vinilo a prueba de agua (fondo blanco)">
 
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/stickers-vinilo-fondo-blanco-1.webp" data-full="./img/stickers-vinilo-fondo-blanco-1.webp" alt="Stickers vinilo a prueba de agua (fondo blanco)">
-            <img loading="lazy" decoding="async" src="./img/thumbs/stickers-vinilo-fondo-blanco-2.webp" data-full="./img/stickers-vinilo-fondo-blanco-2.webp" alt="Stickers vinilo a prueba de agua (fondo blanco)">
-            <img loading="lazy" decoding="async" src="./img/thumbs/stickers-vinilo-fondo-blanco-3.webp" data-full="./img/stickers-vinilo-fondo-blanco-3.webp" alt="Stickers vinilo a prueba de agua (fondo blanco)">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/stickers-vinilo-fondo-blanco-1.webp" data-full="./img/stickers-vinilo-fondo-blanco-1.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/stickers-vinilo-fondo-blanco-1.webp 600w, ./img/stickers-vinilo-fondo-blanco-1.webp 900w" alt="Stickers vinilo a prueba de agua (fondo blanco)">
+            <img loading="lazy" decoding="async" src="./img/thumbs/stickers-vinilo-fondo-blanco-2.webp" data-full="./img/stickers-vinilo-fondo-blanco-2.webp" data-sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" data-srcset="./img/md/stickers-vinilo-fondo-blanco-2.webp 596w, ./img/stickers-vinilo-fondo-blanco-2.webp 894w" alt="Stickers vinilo a prueba de agua (fondo blanco)">
+            <img loading="lazy" decoding="async" src="./img/thumbs/stickers-vinilo-fondo-blanco-3.webp" data-full="./img/stickers-vinilo-fondo-blanco-3.webp" data-sizes="(max-width: 700px) 51vw, (max-width: 1000px) 26vw, 194px" data-srcset="./img/md/stickers-vinilo-fondo-blanco-3.webp 597w, ./img/stickers-vinilo-fondo-blanco-3.webp 895w" alt="Stickers vinilo a prueba de agua (fondo blanco)">
           </div>
         </div>
 
@@ -666,12 +685,12 @@
 
       <article id="stickers-vinilo-holografico" class="card">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/stickers-vinilo-holografico-1.webp" alt="Stickers vinilo a prueba de agua (holográfico)">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/stickers-vinilo-holografico-1.webp" srcset="./img/md/stickers-vinilo-holografico-1.webp 611w, ./img/stickers-vinilo-holografico-1.webp 917w" sizes="(max-width: 700px) 53vw, (max-width: 1000px) 26vw, 201px" alt="Stickers vinilo a prueba de agua (holográfico)">
 
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/stickers-vinilo-holografico-1.webp" data-full="./img/stickers-vinilo-holografico-1.webp" alt="Stickers vinilo a prueba de agua (holográfico)">
-            <img loading="lazy" decoding="async" src="./img/thumbs/stickers-vinilo-holografico-2.webp" data-full="./img/stickers-vinilo-holografico-2.webp" alt="Stickers vinilo a prueba de agua (holográfico)">
-            <img loading="lazy" decoding="async" src="./img/thumbs/stickers-vinilo-holografico-3.webp" data-full="./img/stickers-vinilo-holografico-3.webp" alt="Stickers vinilo a prueba de agua (holográfico)">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/stickers-vinilo-holografico-1.webp" data-full="./img/stickers-vinilo-holografico-1.webp" data-sizes="(max-width: 700px) 53vw, (max-width: 1000px) 26vw, 201px" data-srcset="./img/md/stickers-vinilo-holografico-1.webp 611w, ./img/stickers-vinilo-holografico-1.webp 917w" alt="Stickers vinilo a prueba de agua (holográfico)">
+            <img loading="lazy" decoding="async" src="./img/thumbs/stickers-vinilo-holografico-2.webp" data-full="./img/stickers-vinilo-holografico-2.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/stickers-vinilo-holografico-2.webp 601w, ./img/stickers-vinilo-holografico-2.webp 901w" alt="Stickers vinilo a prueba de agua (holográfico)">
+            <img loading="lazy" decoding="async" src="./img/thumbs/stickers-vinilo-holografico-3.webp" data-full="./img/stickers-vinilo-holografico-3.webp" data-sizes="(max-width: 700px) 52vw, (max-width: 1000px) 26vw, 198px" data-srcset="./img/md/stickers-vinilo-holografico-3.webp 604w, ./img/stickers-vinilo-holografico-3.webp 906w" alt="Stickers vinilo a prueba de agua (holográfico)">
           </div>
         </div>
 
@@ -692,12 +711,12 @@
 
       <article id="tarjetas-emprendimientos" class="card">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/tarjetas-1.webp" alt="Tarjetas para emprendimientos">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/tarjetas-1.webp" srcset="./img/md/tarjetas-1.webp 645w, ./img/tarjetas-1.webp 967w" sizes="(max-width: 700px) 55vw, (max-width: 1000px) 28vw, 209px" alt="Tarjetas para emprendimientos">
 
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/tarjetas-1.webp" data-full="./img/tarjetas-1.webp" alt="Tarjetas para emprendimientos">
-            <img loading="lazy" decoding="async" src="./img/thumbs/tarjetas-2.webp" data-full="./img/tarjetas-2.webp" alt="Tarjetas para emprendimientos">
-            <img loading="lazy" decoding="async" src="./img/thumbs/tarjetas-3.webp" data-full="./img/tarjetas-3.webp" alt="Tarjetas para emprendimientos">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/tarjetas-1.webp" data-full="./img/tarjetas-1.webp" data-sizes="(max-width: 700px) 55vw, (max-width: 1000px) 28vw, 209px" data-srcset="./img/md/tarjetas-1.webp 645w, ./img/tarjetas-1.webp 967w" alt="Tarjetas para emprendimientos">
+            <img loading="lazy" decoding="async" src="./img/thumbs/tarjetas-2.webp" data-full="./img/tarjetas-2.webp" data-sizes="(max-width: 700px) 53vw, (max-width: 1000px) 26vw, 201px" data-srcset="./img/md/tarjetas-2.webp 614w, ./img/tarjetas-2.webp 920w" alt="Tarjetas para emprendimientos">
+            <img loading="lazy" decoding="async" src="./img/thumbs/tarjetas-3.webp" data-full="./img/tarjetas-3.webp" data-sizes="(max-width: 700px) 65vw, (max-width: 1000px) 32vw, 247px" data-srcset="./img/md/tarjetas-3.webp 762w, ./img/tarjetas-3.webp 1080w" alt="Tarjetas para emprendimientos">
           </div>
         </div>
 
@@ -724,12 +743,12 @@
 
       <article id="volantes-color" class="card">
         <div class="gallery">
-          <img loading="lazy" decoding="async" class="main-img" src="./img/volantes-1.webp" alt="Volantes a color">
+          <img loading="lazy" decoding="async" class="main-img" src="./img/volantes-1.webp" srcset="./img/md/volantes-1.webp 676w, ./img/volantes-1.webp 1014w" sizes="(max-width: 700px) 58vw, (max-width: 1000px) 29vw, 220px" alt="Volantes a color">
 
           <div class="thumbs">
-            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/volantes-1.webp" data-full="./img/volantes-1.webp" alt="Volantes a color">
-            <img loading="lazy" decoding="async" src="./img/thumbs/volantes-2.webp" data-full="./img/volantes-2.webp" alt="Volantes a color">
-            <img loading="lazy" decoding="async" src="./img/thumbs/volantes-3.webp" data-full="./img/volantes-3.webp" alt="Volantes a color">
+            <img loading="lazy" decoding="async" class="active" src="./img/thumbs/volantes-1.webp" data-full="./img/volantes-1.webp" data-sizes="(max-width: 700px) 58vw, (max-width: 1000px) 29vw, 220px" data-srcset="./img/md/volantes-1.webp 676w, ./img/volantes-1.webp 1014w" alt="Volantes a color">
+            <img loading="lazy" decoding="async" src="./img/thumbs/volantes-2.webp" data-full="./img/volantes-2.webp" data-sizes="(max-width: 700px) 62vw, (max-width: 1000px) 31vw, 236px" data-srcset="./img/md/volantes-2.webp 721w, ./img/volantes-2.webp 1080w" alt="Volantes a color">
+            <img loading="lazy" decoding="async" src="./img/thumbs/volantes-3.webp" data-full="./img/volantes-3.webp" data-sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 380px" data-srcset="./img/md/volantes-3.webp 800w, ./img/volantes-3.webp 1200w" alt="Volantes a color">
           </div>
         </div>
 
@@ -767,7 +786,7 @@
     <div class="service-list">
       <article>
       <div class="service-thumb">
-        <img loading="lazy" decoding="async" src="./img/thumbs/fotocopias-1.webp" alt="Fotocopias">
+        <img loading="lazy" decoding="async" src="./img/thumbs/fotocopias-1.webp" srcset="./img/thumbs/fotocopias-1.webp 298w, ./img/md/fotocopias-1.webp 595w, ./img/fotocopias-1.webp 893w" sizes="(max-width: 700px) 100vw, 130px" alt="Fotocopias">
       </div>
 
         <div>
@@ -782,7 +801,7 @@
 
       <article>
         <div class="service-thumb">
-          <img loading="lazy" decoding="async" src="./img/thumbs/impresiones-1.webp" alt="Impresiones blanco y negro">
+          <img loading="lazy" decoding="async" src="./img/thumbs/impresiones-1.webp" srcset="./img/thumbs/impresiones-1.webp 333w, ./img/md/impresiones-1.webp 666w, ./img/impresiones-1.webp 998w" sizes="(max-width: 700px) 100vw, 130px" alt="Impresiones blanco y negro">
         </div>
 
         <div>
@@ -797,7 +816,7 @@
 
       <article>
         <div class="service-thumb">
-          <img loading="lazy" decoding="async" src="./img/thumbs/anillados-1.webp" alt="Anillados de apuntes y trabajos">
+          <img loading="lazy" decoding="async" src="./img/thumbs/anillados-1.webp" srcset="./img/thumbs/anillados-1.webp 400w, ./img/md/anillados-1.webp 800w, ./img/anillados-1.webp 1200w" sizes="(max-width: 700px) 100vw, 130px" alt="Anillados de apuntes y trabajos">
         </div>
 
         <div>
@@ -824,7 +843,9 @@
         <div class="combo-gallery">
           <img loading="lazy" decoding="async" 
             class="combo-card__image combo-card__image--real" 
-            src="./img/combo-cumple-tematico-1.webp" 
+            src="./img/combo-cumple-tematico-1.webp"
+            srcset="./img/md/combo-cumple-tematico-1.webp 800w, ./img/combo-cumple-tematico-1.webp 1200w"
+            sizes="(max-width: 700px) 100vw, 310px" 
             alt="Combo cumple temático con banderines, toppers, stickers y palitos para cupckaes"
           >
 
@@ -857,7 +878,9 @@
         <div class="combo-gallery">
           <img loading="lazy" decoding="async" 
             class="combo-card__image combo-card__image--real" 
-            src="./img/combo-emprendedor-1.webp" 
+            src="./img/combo-emprendedor-1.webp"
+            srcset="./img/md/combo-emprendedor-1.webp 689w, ./img/combo-emprendedor-1.webp 1033w"
+            sizes="(max-width: 700px) 100vw, 310px" 
             alt="Combo emprendedor con volantes, tarjetas y cartel laminado"
           >
 
@@ -894,12 +917,12 @@
     </div>
 
     <div class="works-grid">
-      <img loading="lazy" decoding="async" src="./img/trabajo-1.webp" alt="Trabajo personalizado de papelería">
-      <img loading="lazy" decoding="async" src="./img/trabajo-2.webp" alt="Trabajo personalizado de papelería">
-      <img loading="lazy" decoding="async" src="./img/trabajo-3.webp" alt="Trabajo personalizado de papelería">
-      <img loading="lazy" decoding="async" src="./img/trabajo-4.webp" alt="Trabajo personalizado de papelería">
-      <img loading="lazy" decoding="async" src="./img/trabajo-5.webp" alt="Trabajo personalizado de papelería">
-      <img loading="lazy" decoding="async" src="./img/trabajo-6.webp" alt="Trabajo personalizado de papelería">
+      <img loading="lazy" decoding="async" src="./img/trabajo-1.webp" srcset="./img/md/trabajo-1.webp 800w, ./img/trabajo-1.webp 1200w" sizes="(max-width: 700px) 50vw, 380px" alt="Trabajo personalizado de papelería">
+      <img loading="lazy" decoding="async" src="./img/trabajo-2.webp" srcset="./img/md/trabajo-2.webp 800w, ./img/trabajo-2.webp 1200w" sizes="(max-width: 700px) 50vw, 380px" alt="Trabajo personalizado de papelería">
+      <img loading="lazy" decoding="async" src="./img/trabajo-3.webp" srcset="./img/md/trabajo-3.webp 800w, ./img/trabajo-3.webp 1200w" sizes="(max-width: 700px) 50vw, 380px" alt="Trabajo personalizado de papelería">
+      <img loading="lazy" decoding="async" src="./img/trabajo-4.webp" srcset="./img/md/trabajo-4.webp 601w, ./img/trabajo-4.webp 901w" sizes="(max-width: 700px) 50vw, 380px" alt="Trabajo personalizado de papelería">
+      <img loading="lazy" decoding="async" src="./img/trabajo-5.webp" srcset="./img/md/trabajo-5.webp 613w, ./img/trabajo-5.webp 919w" sizes="(max-width: 700px) 50vw, 380px" alt="Trabajo personalizado de papelería">
+      <img loading="lazy" decoding="async" src="./img/trabajo-6.webp" srcset="./img/md/trabajo-6.webp 800w, ./img/trabajo-6.webp 1200w" sizes="(max-width: 700px) 50vw, 380px" alt="Trabajo personalizado de papelería">
     </div>
 
     <div class="works-cta">
@@ -959,7 +982,7 @@
 <a id="floating" class="floating" href="https://wa.me/549XXXXXXXXXX" target="_blank">💬</a>
 
 <footer class="site-footer">
-  <img loading="lazy" decoding="async" class="site-footer__logo" src="./img/thumbs/logo-bar.webp" alt="Bar Papelería personalizada">
+  <img loading="lazy" decoding="async" class="site-footer__logo" src="./img/logo-bar-sm.webp" alt="Bar Papelería personalizada">
 
   <div class="site-footer__brand">
     <strong>Bar Papelería</strong>
@@ -1028,6 +1051,8 @@ Comentarios:`;
 
     thumbs.forEach(function (thumb) {
       thumb.addEventListener('click', function () {
+        mainImg.sizes = thumb.dataset.sizes || '';
+        mainImg.srcset = thumb.dataset.srcset || '';
         mainImg.src = thumb.dataset.full || thumb.src;
         mainImg.alt = thumb.alt;
 
