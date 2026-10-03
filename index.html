@@ -4,6 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bar Papelería Personalizada | Cumpleaños, Stickers y Emprendimientos</title>
+  <meta name="description" content="Papelería personalizada con sucursales en Florencio Varela y Lanús. Bolsitas, toppers y stickers. Pedidos por WhatsApp e Instagram. Envíos a todo el país." />
+  <link rel="canonical" href="https://bar-papeleria.netlify.app/" />
+  <meta name="theme-color" content="#e85d9e" />
+
+  <!-- Vista previa al compartir el link (WhatsApp, Instagram, Facebook, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Bar Papelería" />
+  <meta property="og:title" content="Bar Papelería | Papelería personalizada" />
+  <meta property="og:description" content="Papelería personalizada con sucursales en Florencio Varela y Lanús. Bolsitas, toppers y stickers. Pedidos por WhatsApp e Instagram. Envíos a todo el país." />
+  <meta property="og:url" content="https://bar-papeleria.netlify.app/" />
+  <meta property="og:image" content="https://bar-papeleria.netlify.app/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Bar Papelería: bolsitas, centros de mesa, banderines y toppers personalizados" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -44,10 +64,17 @@
     </div>
   </div>
 
-  <a id="topWhatsappButton" class="whatsapp" href="https://wa.me/549XXXXXXXXXX" target="_blank">
-    <span class="whatsapp-text-full">Hacer pedido</span>
-    <span class="whatsapp-text-short">Pedir</span>
-  </a>
+  <div class="topbar-actions">
+    <a id="topInstagramButton" class="instagram" href="https://www.instagram.com/bar.papeleria/" target="_blank" rel="noopener" aria-label="Instagram @bar.papeleria">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="instagram-dot" cx="17.5" cy="6.5" r="1.2"/></svg>
+      <span class="instagram-text">@bar.papeleria</span>
+    </a>
+
+    <a id="topWhatsappButton" class="whatsapp" href="https://wa.me/549XXXXXXXXXX" target="_blank">
+      <span class="whatsapp-text-full">Hacer pedido</span>
+      <span class="whatsapp-text-short">Pedir</span>
+    </a>
+  </div>
 </header>
 
 <main>
@@ -1111,6 +1138,16 @@ Comentarios:`;
   });
 
 
+
+  const topInstagramButton = document.getElementById('topInstagramButton');
+
+  if (topInstagramButton) {
+    topInstagramButton.addEventListener('click', function () {
+      trackEvent('click_instagram', {
+        ubicacion: 'header'
+      });
+    });
+  }
 
   const catalogPdfButton = document.getElementById('catalogPdfButton');
 
