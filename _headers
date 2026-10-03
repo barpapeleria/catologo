@@ -1,0 +1,4 @@
+# Netlify: las imágenes se guardan 7 días en el celular del visitante,
+# así al volver a entrar no las descarga de nuevo.
+/img/*
+  Cache-Control: public, max-age=604800

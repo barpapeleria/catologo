@@ -439,7 +439,7 @@ def build_html(workdir):
     collage = "".join(f'<img src="{make_thumb(s, workdir, (400, 300))}" alt="">' for s in collage_src)
     cover = f"""
   <section class="page cover">
-    <img class="logo" src="{make_thumb('img/logo-bar.png', workdir, (300, 300))}" alt="Bar Papelería">
+    <img class="logo" src="{make_thumb('img/logo-bar.webp', workdir, (300, 300))}" alt="Bar Papelería">
     <span class="eyebrow">Catálogo con precios · {esc(fecha)}</span>
     <h1>Papelería personalizada para <em>cumpleaños, eventos y emprendimientos</em></h1>
     <p class="lead">Diseños personalizados, combos y detalles para que tu evento o emprendimiento se vea más lindo.</p>
@@ -515,7 +515,7 @@ def build_html(workdir):
         ("Combos y pedidos", final_page),
     ]
     total = len(inner) + 1
-    logo = make_thumb("img/logo-bar.png", workdir, (120, 120))
+    logo = make_thumb("img/logo-bar.webp", workdir, (120, 120))
     pages = [cover] + [page(content, tag, n + 2, total, phone, wa_url, logo)
                        for n, (tag, content) in enumerate(inner)]
 

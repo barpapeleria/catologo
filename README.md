@@ -21,12 +21,19 @@ El sitio está pensado para ser liviano, rápido y fácil de publicar en platafo
 ├── index.html
 ├── estilos.css
 ├── README.md
+├── _headers                  (cacheo de imágenes en Netlify)
+├── pdf/
+│   └── catalogo-bar-papeleria.pdf
+├── tools/
+│   ├── generar_catalogo_pdf.py
+│   └── optimizar_imagenes.py
 └── img/
-    ├── logo-bar.png
-    ├── banderines-1.jpg
-    ├── centro-1-personalizado.jpg
-    ├── servilleteros-1.jpg
-    └── otras-imagenes-del-catalogo
+    ├── logo-bar.webp
+    ├── banderines-1.webp
+    ├── ...
+    └── thumbs/               (miniaturas de las galerías)
+        ├── banderines-1.webp
+        └── ...
 ```
 
 ## Contenido del sitio
@@ -78,6 +85,25 @@ Para ver el sitio en una computadora local:
 2. Abrir el archivo `index.html` en el navegador.
 
 También se puede usar la extensión **Live Server** de Visual Studio Code para trabajar de forma más cómoda.
+
+## Imágenes
+
+Las fotos del sitio están optimizadas en formato **WebP** para que la página cargue rápido en celulares:
+
+* `img/<nombre>.webp`: versión grande (máx. 1200 px), la que se ve en cada producto.
+* `img/thumbs/<nombre>.webp`: miniatura (máx. 400 px) para las galerías, servicios y logo.
+* Todas las imágenes usan `loading="lazy"`: se descargan recién cuando el usuario llega a esa parte de la página.
+
+Para agregar una foto nueva:
+
+1. Copiar la foto (`.jpg` o `.png`) en `img/`.
+2. Correr el optimizador, que genera el `.webp` y la miniatura y borra la foto original:
+
+```bash
+python tools/optimizar_imagenes.py
+```
+
+3. En `index.html` usar `./img/<nombre>.webp` para la imagen principal y, en las galerías, `./img/thumbs/<nombre>.webp` con `data-full="./img/<nombre>.webp"`.
 
 ## Catálogo PDF
 
