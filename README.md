@@ -14,6 +14,24 @@ Este proyecto corresponde a un catálogo web simple desarrollado con tecnología
 
 El sitio está pensado para ser liviano, rápido y fácil de publicar en plataformas gratuitas como **Netlify**.
 
+Sitio publicado: https://bar-papeleria.netlify.app/
+
+## Secciones de la página
+
+Pensada principalmente para celulares, de arriba hacia abajo:
+
+1. **Encabezado fijo:** logo, botón de Instagram (`@bar.papeleria`) y botón de pedido por WhatsApp.
+2. **Tarjeta estilo perfil de Instagram:** cuenta verificada, publicaciones, seguidores, sucursales y botón "Seguir en Instagram".
+3. **Título y botón "Ver catálogo PDF".**
+4. **Categorías:** accesos rápidos a Cumpleaños, Emprendimientos, Servicios rápidos, Combos y Mis trabajos.
+5. **Productos con precios** (Cumpleaños y eventos, Emprendimientos), **Servicios rápidos**, **Combos** y **Mis trabajos**.
+6. **Llamado final** para enviar los datos del pedido por WhatsApp.
+7. **Footer:** sucursales, envíos y botones de Instagram y WhatsApp.
+
+Además hay un botón flotante de WhatsApp y otro para volver arriba.
+
+Todos los botones de pedido abren WhatsApp con un mensaje ya armado (número configurado en `WHATSAPP_PHONE`, dentro del `<script>` de `index.html`).
+
 ## Estructura del proyecto
 
 ```txt
@@ -21,6 +39,7 @@ El sitio está pensado para ser liviano, rápido y fácil de publicar en platafo
 ├── index.html
 ├── estilos.css
 ├── README.md
+├── favicon.ico
 ├── _headers                  (cacheo de imágenes en Netlify)
 ├── pdf/
 │   └── catalogo-bar-papeleria.pdf
@@ -30,6 +49,9 @@ El sitio está pensado para ser liviano, rápido y fácil de publicar en platafo
 └── img/
     ├── logo-bar.webp
     ├── logo-bar-sm.webp
+    ├── og-image.jpg          (imagen de vista previa al compartir el link)
+    ├── favicon-32.png
+    ├── apple-touch-icon.png
     ├── banderines-1.webp
     ├── ...
     ├── md/                   (versiones medianas para celulares)
@@ -111,9 +133,37 @@ python tools/optimizar_imagenes.py
 
 3. En `index.html`, copiar el bloque de un producto existente y cambiar el nombre de la foto en todas sus rutas (`src`, `srcset`, `data-full` y `data-srcset`). Los números con `w` del `srcset` son el ancho real de cada archivo en píxeles.
 
+## Tarjeta de Instagram: actualizar los números
+
+Las publicaciones y seguidores de la tarjeta del inicio **están escritos a mano** (Instagram no permite leerlos automáticamente desde una página estática). Están redondeados con "+" para que sigan siendo correctos por meses, por ejemplo `+140` y `+1.100`.
+
+Cuando el perfil crezca, actualizarlos en `index.html` buscando el comentario:
+
+```html
+<!-- Números redondeados a mano: actualizarlos cada tanto desde el perfil de Instagram. -->
+```
+
+## Google y vista previa al compartir
+
+En el `<head>` de `index.html` están:
+
+* `meta name="description"`: el texto que Google muestra debajo del título en los resultados.
+* Etiquetas `og:` (Open Graph): la tarjeta que aparece al compartir el link por WhatsApp, Instagram o Facebook, con la imagen `img/og-image.jpg` (1200×630 px).
+* Favicon (`favicon.ico`, `img/favicon-32.png` e `img/apple-touch-icon.png`).
+
+Si cambia la descripción del negocio (sucursales, productos, envíos), conviene actualizar `description` y `og:description` juntos. WhatsApp guarda en caché las vistas previas, así que en chats donde ya se compartió el link puede tardar en verse la nueva.
+
 ## Google Analytics
 
 Para que no compita con la carga inicial, el script de Google Analytics se descarga al primer scroll o toque del visitante (o a los 8 segundos si no hay interacción). Los eventos que ocurren antes quedan en cola y se envían igual.
+
+Eventos que registra el sitio:
+
+* `click_whatsapp`: clic en cualquier botón de WhatsApp, con la sección y el producto.
+* `click_instagram`: clic en Instagram (`header`, `tarjeta hero` o `footer`).
+* `click_catalogo_pdf`: clic en "Ver catálogo PDF".
+
+Se ven en Google Analytics en **Informes → Interacción → Eventos**.
 
 ## Catálogo PDF
 
@@ -124,6 +174,8 @@ python tools/generar_catalogo_pdf.py
 ```
 
 Requiere Python 3 con Pillow (`pip install pillow`) y Google Chrome o Microsoft Edge instalados.
+
+Los pasos de "Cómo hacer un pedido" que aparecen en el PDF están en la constante `STEPS` del generador (esa sección ya no está en la web).
 
 ## Publicación
 
@@ -142,24 +194,31 @@ Si los archivos se suben dentro de una carpeta contenedora, el `Publish director
 
 Para mantener buen rendimiento del sitio:
 
-* Optimizar las imágenes antes de subirlas.
-* Usar imágenes en formato `.webp` cuando sea posible.
-* Evitar imágenes demasiado pesadas.
+* Pasar las fotos nuevas por `tools/optimizar_imagenes.py` antes de subirlas.
+* No agregar scripts externos ni widgets pesados sin medir el impacto.
+* Revisar el sitio en [PageSpeed Insights](https://pagespeed.web.dev/) después de cambios grandes.
 * Mantener nombres de archivos simples, sin espacios ni caracteres especiales.
 * Revisar que las rutas de las imágenes coincidan exactamente con los nombres reales de los archivos.
 
 ## Estado del proyecto
 
-Proyecto en desarrollo inicial.
+Sitio publicado y en uso. Resultados de PageSpeed Insights (octubre 2026): 100 en rendimiento, accesibilidad, buenas prácticas y SEO, tanto en celular como en computadora.
 
-El sitio puede evolucionar en futuras versiones incorporando:
+Ya implementado:
 
-* Catálogo dinámico desde archivo JSON
-* Filtros por categoría
-* Botón de pedido por WhatsApp
-* Dominio propio
-* Panel simple de administración
-* Integración con formularios de contacto
+* Pedidos por WhatsApp con mensaje armado y botón flotante.
+* Navegación rápida por categorías.
+* Imágenes optimizadas (WebP, tamaños por pantalla y carga diferida).
+* Catálogo PDF generado desde la web.
+* Tarjeta y botones de Instagram.
+* Descripción para Google, vista previa al compartir y favicon.
+
+Posibles mejoras futuras:
+
+* Actualización automática de los números de Instagram (requiere la API de Meta y una función de Netlify).
+* Catálogo dinámico desde archivo JSON.
+* Dominio propio.
+* Panel simple de administración.
 
 ## Autoría
 
