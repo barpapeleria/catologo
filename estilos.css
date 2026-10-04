@@ -7,6 +7,7 @@
   --primary-dark: #b92f72;
   --violet: #7c5cff;
   --green: #25d366;
+  --green-text: #073b1f; /* texto sobre el verde WhatsApp: contraste 6,4:1 */
   --border: #f2d8e5;
   --brand-gradient: linear-gradient(135deg, #e3157f, #c2116b);
   --shadow: 0 18px 45px rgba(45, 35, 48, 0.10);
@@ -91,13 +92,28 @@ img {
 .card a,
 .floating {
   background: var(--green);
-  color: white;
+  color: var(--green-text);
   font-weight: 900;
   border-radius: 999px;
 }
 
 .whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   padding: 12px 18px;
+}
+
+/* Ícono de WhatsApp en los botones de pedido */
+.wa-icon {
+  width: 1.2em;
+  height: 1.2em;
+  flex: none;
+  fill: currentColor;
+}
+
+.card a .wa-icon {
+  margin-right: 7px;
 }
 
 .whatsapp-text-short {
@@ -532,6 +548,7 @@ main {
 .card a {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 13px 16px;
   margin-top: 18px;
 }
@@ -608,7 +625,7 @@ main {
   padding: 12px 16px;
   border-radius: 999px;
   background: var(--green);
-  color: #fff;
+  color: var(--green-text);
   font-weight: 900;
   white-space: nowrap;
   box-shadow: 0 10px 22px rgba(37, 211, 102, .22);
@@ -739,10 +756,11 @@ main {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  gap: 7px;
   padding: 14px 16px;
   border-radius: 999px;
   background: var(--green);
-  color: #fff;
+  color: var(--green-text);
   font-weight: 900;
 }
 
@@ -794,6 +812,12 @@ footer {
   place-items: center;
   font-size: 1.8rem;
   box-shadow: 0 14px 30px rgba(37,211,102,.35);
+}
+
+.floating .wa-icon {
+  width: 30px;
+  height: 30px;
+  color: #fff;
 }
 
 .back-to-top {
@@ -895,6 +919,7 @@ footer {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
   padding: 15px 24px;
   border-radius: 999px;
   background: #fff;
@@ -982,6 +1007,7 @@ footer {
 
 .site-footer__btn--wa {
   background: var(--green);
+  color: var(--green-text);
 }
 
 .site-footer__legal {
@@ -1064,10 +1090,11 @@ footer {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  gap: 7px;
   padding: 14px 22px;
   border-radius: 999px;
   background: var(--green);
-  color: #fff;
+  color: var(--green-text);
   font-weight: 900;
   box-shadow: 0 12px 26px rgba(37, 211, 102, .24);
   transition: transform .18s ease, box-shadow .18s ease;
