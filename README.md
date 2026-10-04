@@ -150,6 +150,7 @@ En el `<head>` de `index.html` están:
 * `meta name="description"`: el texto que Google muestra debajo del título en los resultados.
 * Etiquetas `og:` (Open Graph): la tarjeta que aparece al compartir el link por WhatsApp, Instagram o Facebook, con la imagen `img/og-image.jpg` (1200×630 px).
 * Favicon (`favicon.ico`, `img/favicon-32.png` e `img/apple-touch-icon.png`).
+* Datos estructurados (`<script type="application/ld+json">`, formato schema.org): describen a Google el negocio, las sucursales de Florencio Varela y Lanús, el teléfono y el Instagram. Si cambian esos datos, actualizarlos también ahí.
 
 Si cambia la descripción del negocio (sucursales, productos, envíos), conviene actualizar `description` y `og:description` juntos. WhatsApp guarda en caché las vistas previas, así que en chats donde ya se compartió el link puede tardar en verse la nueva.
 
