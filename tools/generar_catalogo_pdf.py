@@ -106,15 +106,18 @@ def parse_combos(source):
     return combos
 
 
+# Pasos de "Cómo hacer un pedido" para el PDF. La sección se quitó de la web,
+# así que los pasos viven acá.
+STEPS = [
+    ("1", "Elegís producto", "Mirás el catálogo y elegís qué necesitás."),
+    ("2", "Mandás temática y fecha", "Por WhatsApp enviás nombre, edad, temática, cantidad y fecha."),
+    ("3", "Seña para reservar", "Con seña se reserva el pedido, el precio y el lugar en agenda."),
+    ("4", "Diseño, aprobación y entrega", "Se muestra el diseño, se aprueba y se coordina entrega o retiro."),
+]
+
+
 def parse_steps(source):
-    steps = []
-    for art in re.findall(r"<article>(.*?)</article>", section(source, "como-pedir"), re.S):
-        steps.append({
-            "num": first(r"<span>(.*?)</span>", art),
-            "name": first(r"<h3>(.*?)</h3>", art),
-            "desc": first(r"<p>(.*?)</p>", art),
-        })
-    return steps
+    return [{"num": num, "name": name, "desc": desc} for num, name, desc in STEPS]
 
 
 def parse_phone(source):
