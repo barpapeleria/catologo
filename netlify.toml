@@ -1,0 +1,5 @@
+# Configuración de Netlify (tiene prioridad sobre lo configurado en el panel).
+# Solo se publica la carpeta public/: README, CLAUDE.md, tools/ y demás
+# archivos internos del repositorio no quedan accesibles en el sitio.
+[build]
+  publish = "public"

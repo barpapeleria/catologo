@@ -1,5 +1,5 @@
 """
-Genera pdf/catalogo-bar-papeleria.pdf a partir de index.html.
+Genera public/pdf/catalogo-bar-papeleria.pdf a partir de public/index.html.
 
 Lee productos, precios, servicios, combos y pasos directamente del HTML del
 sitio, así el PDF queda siempre igual que la web. Achica las imágenes y usa
@@ -24,8 +24,9 @@ from pathlib import Path
 from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
-INDEX = ROOT / "index.html"
-OUTPUT = ROOT / "pdf" / "catalogo-bar-papeleria.pdf"
+PUBLIC = ROOT / "public"  # carpeta que publica Netlify
+INDEX = PUBLIC / "index.html"
+OUTPUT = PUBLIC / "pdf" / "catalogo-bar-papeleria.pdf"
 
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
          "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
@@ -142,7 +143,7 @@ def make_thumb(src, workdir, size):
     """Copia la imagen achicada (recorte cuadrado/proporcional) y devuelve su URI."""
     if not src:
         return ""
-    path = (ROOT / src).resolve()
+    path = (PUBLIC / src).resolve()
     if not path.exists():
         print(f"  ! Falta la imagen {src}")
         return ""

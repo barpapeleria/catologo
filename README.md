@@ -30,35 +30,37 @@ Pensada principalmente para celulares, de arriba hacia abajo:
 
 Además hay un botón flotante de WhatsApp y otro para volver arriba.
 
-Todos los botones de pedido abren WhatsApp con un mensaje ya armado (número configurado en `WHATSAPP_PHONE`, dentro del `<script>` de `index.html`).
+Todos los botones de pedido abren WhatsApp con un mensaje ya armado (número configurado en `WHATSAPP_PHONE`, dentro del `<script>` de `public/index.html`).
 
 ## Estructura del proyecto
 
+Todo lo que se publica en el sitio está en la carpeta `public/`. El resto del repositorio (documentación y scripts) es interno y **no** se publica.
+
 ```txt
 /
-├── index.html
-├── estilos.css
-├── README.md
-├── favicon.ico
-├── _headers                  (cacheo de imágenes en Netlify)
-├── pdf/
-│   └── catalogo-bar-papeleria.pdf
-├── tools/
+├── public/                   ← lo único que publica Netlify
+│   ├── index.html
+│   ├── estilos.css
+│   ├── favicon.ico
+│   ├── _headers              (cacheo de imágenes en Netlify)
+│   ├── pdf/
+│   │   └── catalogo-bar-papeleria.pdf
+│   └── img/
+│       ├── logo-bar.webp
+│       ├── logo-bar-sm.webp
+│       ├── og-image.jpg      (imagen de vista previa al compartir el link)
+│       ├── favicon-32.png
+│       ├── apple-touch-icon.png
+│       ├── banderines-1.webp
+│       ├── ...
+│       ├── md/               (versiones medianas para celulares)
+│       └── thumbs/           (miniaturas de las galerías)
+├── tools/                    (scripts internos, no se publican)
 │   ├── generar_catalogo_pdf.py
 │   └── optimizar_imagenes.py
-└── img/
-    ├── logo-bar.webp
-    ├── logo-bar-sm.webp
-    ├── og-image.jpg          (imagen de vista previa al compartir el link)
-    ├── favicon-32.png
-    ├── apple-touch-icon.png
-    ├── banderines-1.webp
-    ├── ...
-    ├── md/                   (versiones medianas para celulares)
-    │   └── ...
-    └── thumbs/               (miniaturas de las galerías)
-        ├── banderines-1.webp
-        └── ...
+├── netlify.toml              (le indica a Netlify que publique public/)
+├── README.md
+└── CLAUDE.md                 (instrucciones para trabajar con Claude Code)
 ```
 
 ## Contenido del sitio
@@ -107,37 +109,45 @@ No se requiere instalación de dependencias.
 Para ver el sitio en una computadora local:
 
 1. Descargar o clonar el repositorio.
-2. Abrir el archivo `index.html` en el navegador.
+2. Abrir el archivo `public/index.html` en el navegador.
 
-También se puede usar la extensión **Live Server** de Visual Studio Code para trabajar de forma más cómoda.
+También se puede usar la extensión **Live Server** de Visual Studio Code: hacer clic derecho sobre `public/index.html` → "Open with Live Server".
+
+Otra opción, desde la raíz del repositorio:
+
+```bash
+python -m http.server 5500 --directory public
+```
+
+y abrir http://localhost:5500
 
 ## Imágenes
 
 Las fotos del sitio están optimizadas en formato **WebP** para que la página cargue rápido en celulares:
 
-* `img/<nombre>.webp`: versión grande (máx. 1200 px), para pantallas grandes.
-* `img/md/<nombre>.webp`: versión mediana (máx. 800 px), la que bajan la mayoría de los celulares.
-* `img/thumbs/<nombre>.webp`: miniatura (máx. 400 px) para las galerías.
-* `img/logo-bar-sm.webp`: logo chico para el encabezado y el pie.
+* `public/img/<nombre>.webp`: versión grande (máx. 1200 px), para pantallas grandes.
+* `public/img/md/<nombre>.webp`: versión mediana (máx. 800 px), la que bajan la mayoría de los celulares.
+* `public/img/thumbs/<nombre>.webp`: miniatura (máx. 400 px) para las galerías.
+* `public/img/logo-bar-sm.webp`: logo chico para el encabezado y el pie.
 * Las imágenes principales usan `srcset` + `sizes`: el navegador elige solo el tamaño justo para cada pantalla.
 * Todas las imágenes usan `loading="lazy"`: se descargan recién cuando el usuario llega a esa parte de la página.
 
 Para agregar una foto nueva:
 
-1. Copiar la foto (`.jpg` o `.png`) en `img/`.
-2. Correr el optimizador, que genera las tres versiones (grande, mediana y miniatura) y borra la foto original:
+1. Copiar la foto (`.jpg` o `.png`) en `public/img/`.
+2. Correr el optimizador, que genera las tres versiones (grande, mediana y miniatura) y borra la foto original. No toca `og-image.jpg` ni los favicons, que tienen que quedar en JPG/PNG:
 
 ```bash
 python tools/optimizar_imagenes.py
 ```
 
-3. En `index.html`, copiar el bloque de un producto existente y cambiar el nombre de la foto en todas sus rutas (`src`, `srcset`, `data-full` y `data-srcset`). Los números con `w` del `srcset` son el ancho real de cada archivo en píxeles.
+3. En `public/index.html`, copiar el bloque de un producto existente y cambiar el nombre de la foto en todas sus rutas (`src`, `srcset`, `data-full` y `data-srcset`). Los números con `w` del `srcset` son el ancho real de cada archivo en píxeles.
 
 ## Tarjeta de Instagram: actualizar los números
 
 Las publicaciones y seguidores de la tarjeta del inicio **están escritos a mano** (Instagram no permite leerlos automáticamente desde una página estática). Están redondeados con "+" para que sigan siendo correctos por meses, por ejemplo `+140` y `+1.100`.
 
-Cuando el perfil crezca, actualizarlos en `index.html` buscando el comentario:
+Cuando el perfil crezca, actualizarlos en `public/index.html` buscando el comentario:
 
 ```html
 <!-- Números redondeados a mano: actualizarlos cada tanto desde el perfil de Instagram. -->
@@ -145,11 +155,11 @@ Cuando el perfil crezca, actualizarlos en `index.html` buscando el comentario:
 
 ## Google y vista previa al compartir
 
-En el `<head>` de `index.html` están:
+En el `<head>` de `public/index.html` están:
 
 * `meta name="description"`: el texto que Google muestra debajo del título en los resultados.
-* Etiquetas `og:` (Open Graph): la tarjeta que aparece al compartir el link por WhatsApp, Instagram o Facebook, con la imagen `img/og-image.jpg` (1200×630 px).
-* Favicon (`favicon.ico`, `img/favicon-32.png` e `img/apple-touch-icon.png`).
+* Etiquetas `og:` (Open Graph): la tarjeta que aparece al compartir el link por WhatsApp, Instagram o Facebook, con la imagen `public/img/og-image.jpg` (1200×630 px).
+* Favicon (`public/favicon.ico`, `public/img/favicon-32.png` y `public/img/apple-touch-icon.png`).
 * Datos estructurados (`<script type="application/ld+json">`, formato schema.org): describen a Google el negocio, las sucursales de Florencio Varela y Lanús, el teléfono y el Instagram. Si cambian esos datos, actualizarlos también ahí.
 
 Si cambia la descripción del negocio (sucursales, productos, envíos), conviene actualizar `description` y `og:description` juntos. WhatsApp guarda en caché las vistas previas, así que en chats donde ya se compartió el link puede tardar en verse la nueva.
@@ -168,7 +178,7 @@ Se ven en Google Analytics en **Informes → Interacción → Eventos**.
 
 ## Catálogo PDF
 
-El botón **Ver catálogo PDF** abre `pdf/catalogo-bar-papeleria.pdf`. Ese archivo se genera automáticamente a partir de `index.html` (productos, precios, servicios y combos), así que después de cambiar precios en la web hay que regenerarlo:
+El botón **Ver catálogo PDF** abre `public/pdf/catalogo-bar-papeleria.pdf`. Ese archivo se genera automáticamente a partir de `public/index.html` (productos, precios, servicios y combos), así que después de cambiar precios en la web hay que regenerarlo:
 
 ```bash
 python tools/generar_catalogo_pdf.py
@@ -182,14 +192,14 @@ Los pasos de "Cómo hacer un pedido" que aparecen en el PDF están en la constan
 
 El sitio está preparado para ser publicado como sitio estático en Netlify.
 
-Configuración recomendada en Netlify:
+La configuración está en `netlify.toml`, en la raíz del repositorio, y tiene prioridad sobre lo configurado en el panel de Netlify:
 
-```txt
-Build command: dejar vacío
-Publish directory: /
+```toml
+[build]
+  publish = "public"
 ```
 
-Si los archivos se suben dentro de una carpeta contenedora, el `Publish directory` debe apuntar a esa carpeta.
+No hay comando de build: Netlify publica la carpeta `public/` tal cual. Cada push a `main` se publica automáticamente en unos segundos.
 
 ## Recomendaciones
 
