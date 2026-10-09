@@ -410,6 +410,11 @@ main {
   margin-top: 8px;
 }
 
+/* Galerías con 4 fotos: las miniaturas en una sola fila. */
+.thumbs--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .thumbs img {
   aspect-ratio: 1.2;
   object-fit: cover;
